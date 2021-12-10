@@ -23,8 +23,11 @@ public class Main {
         //Day07_1.run();
         //Day07_2.run();
 
-        Day08_1.run();
-        Day08_2.run();
+        //Day08_1.run();
+        //Day08_2.run();
+
+        Day09_1.run();
+        Day09_2.run();
 
     }
 }
