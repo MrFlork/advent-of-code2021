@@ -41,15 +41,14 @@ public class Day12_2 {
             visitedNodesNext = visitedNodes;
         }
 
-        // second visit is not yet taken, also include SmallCave that have 1 visit => limit 2
+        // if second visit is not yet taken, also include SmallCave that have 1 visit => limit 2
         final int limit = isSecondVisitTaken ? 1 : 2;
-        final List<Node> availableNeighbors = graph.get(node).stream()
-                .filter(n -> n != Node.start && visitedNodes.count(n) < limit)
-                .collect(Collectors.toList());
 
         int pathCount = 0;
-        for (Node neighbour : availableNeighbors) {
-            pathCount += depthFirstSearch(neighbour, visitedNodesNext, graph, isSecondVisitTaken);
+        for (Node neighbor : graph.get(node)) {
+            if (neighbor != Node.start && visitedNodes.count(neighbor) < limit) {
+                pathCount += depthFirstSearch(neighbor, visitedNodesNext, graph, isSecondVisitTaken);
+            }
         }
 
         return pathCount;
